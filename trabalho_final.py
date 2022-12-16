@@ -17,7 +17,7 @@ precocamisa=49.9
 precocalca=99.9
 precobota=149.9
 total=0
-#COMEÇO DO PROGRAMA
+totalparcelado=0
 '''
 FERRAMENTAS UTILIZADAS:
 ESCREVA e LEIA:OK
@@ -28,6 +28,7 @@ ENQUANTO:OK
 PARA:OK
 VETOR:OK
 '''
+#COMEÇO DO PROGRAMA
 #UTILIZANDO O 'ENQUANTO' PARA MANTER O LOOP ATÉ FINALIZAR O PROGRAMA
 while True:
     #CRIANDO UMA VARIÁVEL BOOLEANA PARA AUXILIAR NA FINALIZAÇÃO DE ALGUNS LOOPS DURANTE O PROGRAMA
@@ -35,7 +36,30 @@ while True:
     #UTILIZA UMA FUNÇÃO DA BIBLIOTECA 'os' PARA LIMPAR O TERMINAL
     os.system("cls")
     #UTILIZANDO O 'ESCREVAL' PARA INTRODUZIR O INICIO DO PROGRAMA
-    print("""Bem Vindo à HARLEY BH MOTOCLUBE
+    print("""
+   *       )           )       (
+ (  `   ( /(  *   ) ( /(   (   )\ )        (
+ )\))(  )\()` )  /( )\())  )\ (()/(   (  ( )\ (
+((_)()\((_)\ ( )(_)((_)\ (((_) /(_))  )\ )((_))
+(_()((_) ((_(_(_())  ((_))\___(_)) _ ((_((_)_((_)
+|  \/  |/ _ |_   _| / _ ((/ __| | | | | || _ | __|
+| |\/| | (_) || |  | (_) | (__| |_| |_| || _ | _|
+|_|  |_|\___/ |_|   \___/ \___|____\___/ |___|___|
+    ___                                .'-----\\ _
+    \  \                              //      #``.) __
+     \  \_________                     __--~~--_-\\/ |)
+      \           ~~-              _-~~         -_``.|)
+|\_.--~~~~~~~~~~-._  \________   _~   Harley-   |   \\
+|/   (} _..._/*/   \          ~\~      Davidson |    ``.--~~~~~--__
+/___-~~~    /=/~-_  ~~~--------~~--------------/    .-~\\ _________~
+  *     ---/=/    \  \       /[]===_____===_  ||   /  __``.    / \   *
+      / __/=/_\____\__\     /[]###/===  \###\ ||  /__/    \\ /
+ |   | [ |*|___________~~~~~==/ ##\_____/## \ \|  |  |------*------|  |
+      \ ~~___________________/ /_##+++++++*  | |           /  |
+  *     ---\_)________________/___________\_/ /    *   \ /     \ /   *
+    *           *     \_)____________________/       *    ~~~~~    *
+       -------                                           -------
+Bem Vindo à HARLEY BH MOTOCLUBE
 Produtos licenciados e exclusivos Harley Davidson
 Todos os produtos são confeccionados com as cores e estampas da marca Harley Davidson
 Segue em lista nossos produtos""")
@@ -185,11 +209,11 @@ Pagamentos no cartão de crédito parcelado tem acrescimo de 1,5% por parcela"""
                     #USO DO 'SENAO' PARA SE AS CONDIÇÕES ANTERIORES FOREM NÃO ATENDIDAS VERIFICAR SE ESSAS CONDIÇÃO SAO ATENDIDAS
                     elif pagamento==1 and parcelas > 1:
                         #FAZ O CÁLCULO DO ACRESCIMO DOS JUROS DA OPÇÃO
-                        totalparcelado=(total/parcelas)+(totalparcelado*(1.5/100))
-                        total=totalparcelado*parcelas
                         #USO DO 'ESCREVAL' PARA MOSTRAR O TOTAL POR PARCELAS E O TOTAL FINAL COM OS JUROS
-                        print("Cada parcela saira por:R$"+round(totalparcelado,2))
-                        print("E o total final ficará em:R$"+round(total,2))
+                        totalparcelado=(total/parcelas)+((total/parcelas)*(1.5/100))
+                        print("Cada parcela saira por:R$"+str(round(totalparcelado,2)))
+                        total=totalparcelado*parcelas
+                        print("E o total final ficará em:R$"+str(round(total,2)))
                          #USO DO  'LEIA' PARA DEFINIR SE VAI CONTINUAR O PROCESSO
                         confirmar=input("Confirmar? <SIM> <NÂO>\n")
                         #USO DO 'SE' E DO CONECTIVO 'OU' PARA ACEITAR DOIS TIPOS DE 'LEIA'
