@@ -18,6 +18,16 @@ precocalca=99.9
 precobota=149.9
 total=0
 #COMEÇO DO PROGRAMA
+'''
+FERRAMENTAS UTILIZADAS:
+ESCREVA e LEIA:OK
+SE...ENTÃO...SENÃO:OK
+Conectivos E e OU: OK
+ESCOLHA...CASO:OK
+ENQUANTO:OK
+PARA:OK
+VETOR:OK
+'''
 #UTILIZANDO O 'ENQUANTO' PARA MANTER O LOOP ATÉ FINALIZAR O PROGRAMA
 while True:
     #CRIANDO UMA VARIÁVEL BOOLEANA PARA AUXILIAR NA FINALIZAÇÃO DE ALGUNS LOOPS DURANTE O PROGRAMA
@@ -72,7 +82,7 @@ Segue em lista nossos produtos""")
                     #FAZ A SOMA DO VALOR DA BANDANA NO VALOR FINAL PARA O CLIENTE
                     total=total+precobandana
                 #'OUTRO CASO' VOLTA AO MENU PRINCIPAL PELA FALTA DE CONTINUAÇÃO DO PROCESSO
-        case 2:
+        case 2: #VIDE CASO 1 PARA EXPLICAÇÃO DO FUNCIONAMENTO
             while True:
                 print(catalogo[1])
                 print(tamanhojaqueta)
@@ -89,7 +99,7 @@ Segue em lista nossos produtos""")
                 case 1:
                     carrinho.append('Jaqueta '+escolhajaqueta.upper()+' R$'+str(precojaqueta))
                     total=total+precojaqueta
-        case 3:
+        case 3: #VIDE CASO 1 PARA EXPLICAÇÃO DO FUNCIONAMENTO
             while True:
                 print(catalogo[2])
                 print(tamanhocamisa)
@@ -106,7 +116,7 @@ Segue em lista nossos produtos""")
                 case 1:
                     carrinho.append('Camisa '+escolhacamisa.upper()+' R$'+str(precocamisa))
                     total=total+precocamisa
-        case 4:
+        case 4: #VIDE CASO 1 PARA EXPLICAÇÃO DO FUNCIONAMENTO
             while True:
                 print(catalogo[3])
                 print(tamanhocalca)
@@ -123,7 +133,7 @@ Segue em lista nossos produtos""")
                 case 1:
                     carrinho.append('Calça '+escolhacalca+' R$'+str(precocalca))
                     total=total+precocalca
-        case 5:
+        case 5: #VIDE CASO 1 PARA EXPLICAÇÃO DO FUNCIONAMENTO
             while True:
                 print(catalogo[4])
                 print(tamanhobota)
@@ -143,51 +153,84 @@ Segue em lista nossos produtos""")
                     total=total+precobota
         case 6:
             while True:
+                #USO DO 'ESCREVAL'
                 print(catalogo[5])
+                #USO DO 'PARA' NAVEGAR OS ITENS DO 'VETOR':'CARRINHO'
                 for i in range(len(carrinho)):
+                    #USO DO 'ESCREVAL' MOSTRANDO OS ITENS DO CARRINHO COM O ÍNDICE
                     print("Carrinho:<",i,">",carrinho[i])
+                #USO DO 'ESCREVAL' PARA MOSTRAR O TOTAL DA COMPRA
                 print("O total da sua compra é:R$"+str(total))
+                #USO DO 'ESCREVAL'
                 print("""Estamos trabalho com cartão de crédito e dinheiro
 Pagamentos no dinheiro tem desconto de 10%
 Pagamentos no cartão de crédito e avista tem desconto de 5%
 Pagamentos no cartão de crédito parcelado tem acrescimo de 1,5% por parcela""")
+                #USO DO 'LEIA' PARA PEGAR O TIPO DO PAGAMENTO
                 pagamento=int(input("Como deseja pagar?\n1..Cartão\n2..Dinheiro\n"))
+                #'SE' O PAGAMENTO FOR IGUAL 1
                 if pagamento==1:
+                    #USO DO 'LEIA' PARA PEGAR O NÚMERO DE PARCELAS
                     parcelas=int(input("Diga o número de parcelas:"))
-                    if pagamento==1 and parcelas==1:
-                        print("O seu total é:R$"+str(total)+"\nCom o desconto de 5%:R$"+str(total-(total*(5/100))))
-                        confirmar=input("Confirmar? <SIM> <NÂO>")
-                        confirmar=confirmar.upper()
-                        if confirmar=="SIM":
+                    #SE O TIPO DO PAGAMENTO FOR CARTÃO UTILIZA O CONECTIVO 'E' PARA DEFINIR SE DUAS CONDIÇÕES SÃO ACEITAS
+                    if pagamento==1 and parcelas<=1:
+                        #USO DO 'ESCREVAL'
+                        print("O seu total é:R$"+str(total)+"\nCom o desconto de 5%:R$"+(str(round(total-(total*(5/100)),2))))
+                        #USO DO  'LEIA' PARA DEFINIR SE VAI CONTINUAR O PROCESSO
+                        confirmar=input("Confirmar? <SIM> <NÂO>\n")
+                        #USO DO 'SE' E DO CONECTIVO 'OU' PARA ACEITAR DOIS TIPOS DE 'LEIA'
+                        if confirmar=="SIM" or confirmar=="sim":
+                                    #MUDA O VALOR DA VARIÁVEL AUXILIAR
                                     aux=True
+                    #USO DO 'SENAO' PARA SE AS CONDIÇÕES ANTERIORES FOREM NÃO ATENDIDAS VERIFICAR SE ESSAS CONDIÇÃO SAO ATENDIDAS
                     elif pagamento==1 and parcelas > 1:
+                        #FAZ O CÁLCULO DO ACRESCIMO DOS JUROS DA OPÇÃO
                         totalparcelado=(total/parcelas)+(totalparcelado*(1.5/100))
                         total=totalparcelado*parcelas
-                        print("Cada parcela saira por:R$"+totalparcelado)
-                        print("E o total final ficará em:R$"+total)
-                        confirmar=input("Confirmar? <SIM> <NÂO>")
-                        confirmar=confirmar.upper()
-                        if confirmar=="SIM":
-                                aux=True
-                    else:
-                        print("O seu total é:R$"+str(total)+"\nCom o desconto de 10%:R$"+str(total-(total*(10/100))))
-                        confirmar=input("Confirmar? <SIM> <NÂO>")
-                        confirmar=confirmar.upper()
-                        if confirmar=="SIM":
-                            aux=True     
+                        #USO DO 'ESCREVAL' PARA MOSTRAR O TOTAL POR PARCELAS E O TOTAL FINAL COM OS JUROS
+                        print("Cada parcela saira por:R$"+round(totalparcelado,2))
+                        print("E o total final ficará em:R$"+round(total,2))
+                         #USO DO  'LEIA' PARA DEFINIR SE VAI CONTINUAR O PROCESSO
+                        confirmar=input("Confirmar? <SIM> <NÂO>\n")
+                        #USO DO 'SE' E DO CONECTIVO 'OU' PARA ACEITAR DOIS TIPOS DE 'LEIA'
+                        if confirmar=="SIM" or confirmar=="sim":
+                                    #MUDA O VALOR DA VARIÁVEL AUXILIAR
+                                    aux=True
+                else:
+                    #USO DO 'ESCREVAL' PARA MOSTRAR OS VALORES DESSA CONDIÇÃO
+                    print("O seu total é:R$"+str(total)+"\nCom o desconto de 10%:R$"+(str(round(total-(total*(10/100)),2))))
+                     #USO DO  'LEIA' PARA DEFINIR SE VAI CONTINUAR O PROCESSO
+                    confirmar=input("Confirmar? <SIM> <NÂO>\n")
+                    #USO DO 'SE' E DO CONECTIVO 'OU' PARA ACEITAR DOIS TIPOS DE 'LEIA'
+                    if confirmar=="SIM" or confirmar=="sim":
+                        #MUDA O VALOR DA VARIÁVEL AUXILIAR
+                        aux=True
+                #USO DO 'SE' PARA VERIFICAR SE A VARIÁVEL BOOLEANA ATENDE O VALOR
                 if aux==True:
+                    #'SE' A VARIVÁVEL FOR VERDADEIRA UTILIZA O 'ALEATÓRIO' IMPORTADO DA BIBLIOTECA PARA PEGAR UM NÚMERO ALEATÓRIO
                     sorteio=randint(1,10)
-                    print(sorteio)
+                    #print(sorteio) UTILIZA O 'ESCREVAL' PARA MOSTRAR O NÚMERO PARA TESTE
+                    #USO DO 'ESCREVAL'
                     print("Como promoção pela inauguração da loja, temos uma brincadeira:\nAdvinhe o número de 1 a 10 e ganhe um prêmio!")
+                    #USO DO 'LEIA' PARA PEGAR O NÚMERO QUE O USUÁRIO DIGITAR
                     chute=int(input("Diga um número para tentar a sorte:"))
+                    #USO DO 'SE' PARA COMPARAR O NÚMERO DIGITADO PELO USUÁRIO E O NÚMERO GERADO PELO SORTEIRO
                     if chute==sorteio:
+                        #USO DO 'ESCREVAL'
+                        print("O número sorteado foi:",sorteio)
                         print("Parabéns, você ganhou uma camisa exclusiva da loja!!!")
+                    #USO DO 'SENÃO'
                     else:
                         print("Que pena, você não acertou!")
+                    #USO DO 'BREAK' PARA ENCERRAR ESTE LOOP
                     break
+            #USO DO 'ESCREVAL'
             print("Obrigado por comprar conosco e volte sempre")
-            break              
+            #USO DO BREAK PARA ENCERRAR O PROGRAMA
+            break
         case 7:
+            #USO DO 'ESCREVAL'
             print(catalogo[6])
             print("Obrigado por visitar nossa loja!!!")
+            #FINALIZA O PROGRAMA USANDO O 'BREAK'
             break
