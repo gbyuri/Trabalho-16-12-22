@@ -1,48 +1,77 @@
-import os
-from random import randint
+#IMPORTANDO BIBLIOTICAS
+import os #BIBLIOTECA SENDO USADA PARA LIMPAR O TERMINAL DURANTE A EXECUÇÃO EM ALGUMAS PARTES DO ALGORITMO
+from random import randint #BIBLIOTECA SENDO USADA PARA GERAR UM NÚMERO INTEIRO ALEATÓRIO
+#VARIAVEIS
+#DO TIPO VETOR
 catalogo=['1..Bandana','2..Jaqueta','3..Camisa','4..Calça','5..Botas','6..Finalizar compra','7..Sair']
 coresbandana=['AZUL','VERMELHA','AMARELA','PRETA']
-precobandana=24.9
 tamanhojaqueta=['PP','P','M','G','GG']
-precojaqueta=249.9
 tamanhocamisa=['PP','P','M','G','GG']
-precocamisa=49.9
 tamanhocalca=['36','38','40','42','44','46','48']
-precocalca=99.9
 tamanhobota=['36~37','38~39','40~41','42~43','44~45','46~47']
-precobota=149.9
 carrinho=[]
+#DO TIPO FLOAT
+precobandana=24.9
+precojaqueta=249.9
+precocamisa=49.9
+precocalca=99.9
+precobota=149.9
 total=0
-escolhacamisa="nada"
+#COMEÇO DO PROGRAMA
+#UTILIZANDO O 'ENQUANTO' PARA MANTER O LOOP ATÉ FINALIZAR O PROGRAMA
 while True:
+    #CRIANDO UMA VARIÁVEL BOOLEANA PARA AUXILIAR NA FINALIZAÇÃO DE ALGUNS LOOPS DURANTE O PROGRAMA
     aux=False
+    #UTILIZA UMA FUNÇÃO DA BIBLIOTECA 'os' PARA LIMPAR O TERMINAL
     os.system("cls")
+    #UTILIZANDO O 'ESCREVAL' PARA INTRODUZIR O INICIO DO PROGRAMA
     print("""Bem Vindo à HARLEY BH MOTOCLUBE
 Produtos licenciados e exclusivos Harley Davidson
 Todos os produtos são confeccionados com as cores e estampas da marca Harley Davidson
 Segue em lista nossos produtos""")
+    #'ESCREVA' MOSTRANDO TODOS OS ITENS DO CATÁLOGO
     print(catalogo)
+    #SE TIVER ITENS NA VETOR 'CARRINHO' UTILIZA O 'PARA' E MOSTRA OS ITENS NO CARRINHO
     for i in range(len(carrinho)):
+        #ESCREVE A POSIÇÃO INDICANDO O INDICE DO 'VETOR' E O SEU CONTEUDO
         print("Carrinho:<",i,">",carrinho[i])
+    #'LEIA' SENDO UTILIZADO PARA PEGAR O QUE O USUÁRIO DIIGTAR E COLOCAR EM UMA VARIÁVEL INTEIRA CHAMADA MENU
     menu=int(input("O que quer fazer hoje:\n"))
+    #'ESCOLHA..CASO' UTILIZANDO O QUE FOI ESCRITO NA VARIÁVEL MENU PARA NAVEGAR AS OPÇÕES DO ALGORITMO
     match menu:
         case 1:
+            #'ENQUANTO' PARA MOSTRAR AS OPÇÕES DESSE ÍNDICE ENQUANTO O USUÁRIO DIGITAR ALGO DIFERENTE DAS OPÇÕES MOSTRADAS
             while True:
+                #USO DO 'ESCREVAL'
                 print(catalogo[0])
+                #USO DO 'ESCREVAL'
                 print(coresbandana)
+                #'LEIA' ARMAZENANDO O QUE A PESSOA DIGITOU
                 escolhabandana=input("Diga qual cor você quer:\n")
+                #UTILIZANDO O 'PARA' VERIFICANDO SE DENTRO DO VETOR EXISTE O QUE A PESSOA DIGITOU
                 for i in range(len(coresbandana)):
+                    #ARMAZENA DENTRO DA VARIÁVEL O ITEM QUE O ÍNDICE DE ESTÁ TRABALHO
                     estoquebandana=coresbandana[i]
+                    #UTILIZANDO O 'SE..ENTAO' PARA COMPARAR O QUE FOI DIGITAR COM O ITEM QUE ESTÁ DENTRO DO VETOR
                     if estoquebandana==escolhabandana.upper():
+                        #'SE' FOREM IGUAIS '==' TORNA A VARIVÁVEL BOOLEANA VERDADEIRA
                         aux=True
+                #'SE' A VARIÁVEL BOOLEANA FOR VERDADEIRA
                 if aux==True:
+                    #FINALIZA O LOOP UTILIZANDO O 'BREAK'
                     break
+            #'ESCREVAL' MOSTRANDO A VARIÁVEL 'FLOAT' DO VALOR QUE SERÁ CALCULADO
             print("O preço da bandana é:R$",precobandana)
+            #USO DO 'LEIA' PARA ARMAZERAR UM VALOR INTEIRO À VARIÁVEL
             comprar=int(input("Gostaria de comprar? <1>Sim <2> Não\n"))
+            #UTILIZANDO O 'ESCOLHA..CASO' PARA DEFINIR SE A PESSOA QUER CONTINUAR OU NÃO O PROCESSO
             match comprar:
+                #'CASO 1' COLOCA NA ULTIMA POSIÇÃO LIVRE DO CARRINHO A IDENTIFICAÇÃO DO ITEM, O ITEM QUE FOI VERIFICADO SE EXISTE E O PREÇO DO ITEM
                 case 1:
                     carrinho.append('Bandana '+escolhabandana.upper()+' R$'+str(precobandana))
+                    #FAZ A SOMA DO VALOR DA BANDANA NO VALOR FINAL PARA O CLIENTE
                     total=total+precobandana
+                #'OUTRO CASO' VOLTA AO MENU PRINCIPAL PELA FALTA DE CONTINUAÇÃO DO PROCESSO
         case 2:
             while True:
                 print(catalogo[1])
